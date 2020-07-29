@@ -11,6 +11,11 @@
         "ncu": "node ./node_modules/npm-check-updates/bin/ncu.js --semverLevel major -e 2",
         "e2e": "ng e2e"
     },
+    "husky": {
+        "hooks": {
+            "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+        }
+    },
     "private": true,
     "dependencies": {
         "@angular/animations": "~10.0.6",
