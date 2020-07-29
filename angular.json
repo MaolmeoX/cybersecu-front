@@ -124,9 +124,7 @@
                 }
             }
         }
-      }
-    }
-  },
+      },
   "defaultProject": "robiot-app",
   "cli": {
     "analytics": false
