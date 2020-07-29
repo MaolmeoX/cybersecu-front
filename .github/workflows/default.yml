@@ -5,6 +5,9 @@ on:
         branches:
             - develop
             - master
+            - build
+            - prod
+            - test
             - QA
             - tma/*
             - fix/*
