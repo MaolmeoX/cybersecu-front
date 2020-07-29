@@ -1,0 +1,43 @@
+name: Build, Quality, Test
+
+on:
+    push:
+        branches:
+            - develop
+            - master
+            - QA
+            - tma/*
+            - fix/*
+            - core/*
+            - chore/*
+            - feature/*
+            - format/*
+            - refactor/*
+
+jobs:
+    default:
+        container:
+            image: node:12-alpine
+
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v2
+            - name: Get npm cache directory path
+              id: npm-cache-dir-path
+              run: echo "::set-output name=dir::$(npm cache dir)"
+            - name: Cache modules
+              uses: actions/cache@v1.1.2
+              id: npm-cache
+              with:
+                  path: ${{ steps.npm-cache-dir-path.outputs.dir }}
+                  key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+                  restore-keys: |
+                    ${{ runner.os }}-npm-
+            - name: Install dependencies
+              run: |
+                  apk add --no-cache git chromium
+                  npm i
+            - name: Lint
+              run: npm lint
