@@ -1,4 +1,4 @@
-module.exports = {
+{
     "convention": "https://commitlint.js.org/#/concepts-commit-conventions",
     "extends": [
         "@commitlint/config-conventional"
@@ -34,4 +34,4 @@ module.exports = {
             0
         ]
     }
-};
+}
